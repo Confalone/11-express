@@ -5,7 +5,7 @@
 import storage from '../lib/storage/data-store.js';
 import uuid from 'uuid/v1';
 
-class Note{
+class Tylers{
 
   /**
    * Simple constructor function for our note model
@@ -62,4 +62,4 @@ class Note{
 
 }
 
-export default Note;
+export default Tylers;
