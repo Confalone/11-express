@@ -52,11 +52,12 @@ class Tylers{
     return storage.get(id);
   }
 
-  static updateOne(criteria) {
-    return storage.update(this);
-  }
+  // static updateOne(criteria) {
+  //   return storage.update(this);
+  // }
 
   static deleteOne(id) {
+    console.log('deleteOne', id);
     return storage.delete(id);
   }
 

@@ -84,5 +84,13 @@ storage.save = (data) => {
   });
 };
 
+storage.delete = (data) => {
+  return new Promise((resolve, reject) => {
+    if(!data.id) { reject('No Record ID Specified'); }
+    delete `${dataDirectory}/${data.id}.json`;
+    resolve('Record deleted');
+  });
+};
+
 
 export default storage;

@@ -34,4 +34,15 @@ storage.save = (data) => {
   });
 };
 
+// storage.delete = (id) => {
+//   return new Promise((resolve,reject) => {
+//     if(database[id]) {
+//       delete database[id];
+//       resolve('Entry Deleted!');
+//     } else {
+//       reject('Entry was not found');
+//     }
+//   });
+// };
+
 export default storage;

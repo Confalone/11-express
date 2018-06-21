@@ -18,6 +18,14 @@ let sendJSON = (res,data) => {
   res.end();
 };
 
+let sendJSON204 = (res, data) => {
+  res.statusCode = 204;
+  res.statusMessage = 'OK';
+  res.setHeader('Content-Type', 'application/json');
+  res.write(JSON.stringify(data));
+  res.end();
+};
+
 /**
  * Send a formatted (JSON) error the user in case of catastrophe
  * @param res
@@ -60,23 +68,19 @@ router.post('/api/v1/tylers', (req,res) => {
 
 });
 
-// router.delete('api/v1/tylers/:id', (req,res) => {
-
-//   Tylers.delete(req.params.id)
-//     .then(data => sendJSON(res, data))
-//     .catch(err => serverError(res, err));
-//   });
-router.delete('/api/v1/tylers', (req,res) => {
-  // if ( req.params.id ) {
-    res.send('Delte requested');
-  //   Tylers.deleteOne(req.params.id)
-  //     .then(data => sendJSON(res, data)
-  //     .catch(err => serverError(res, err))
-  // }
-  // else {
-  //   serverError(res, 'Record Not Found');
-  // }
-
+router.delete('api/v1/tylers/:id', (req,res) => {
+  console.log(req.params.id);
+  if(req.params.id) {
+    let id = req.params.id;
+    Tylers.deleteOne(id)
+      .then(data => sendJSON204(res, data))
+      .catch(err => {
+        console.log('router.delete', err);
+        serverError(res, err);
+      });
+  } else {
+    serverError(res, 'Record Not Found');
+  }
 });
-// ES6, FTW! Export this the cool way
+
 export default router;
