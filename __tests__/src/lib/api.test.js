@@ -8,7 +8,7 @@ const apiURL = 'http://localhost:3000/api/v1/Tylers';
 
 describe('/api/v1/Tylers', () => {
 
-  beforeAll(app.start);
+  beforeAll(app.start(3000));
   afterAll(app.stop);
   
   it('testing that api/v1/Tylers GET one by id route returns a 200 status code on success', () => {
